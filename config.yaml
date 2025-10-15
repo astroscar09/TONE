@@ -1,0 +1,946 @@
+TONE:
+  photometry: "Matched_Catalogs/TONE_matched_photom_cat.fits"
+  filters: 
+    - "filters/CFHT/CFHT_Megaprime.u.dat"
+    - "filters/HSC_Filters/HSC_g_filt.txt"
+    - "filters/HSC_Filters/HSC_r_filt.txt"
+    - "filters/HSC_Filters/HSC_i_filt.txt"
+    - "filters/HSC_Filters/HSC_z_filt.txt"
+    - "filters/HSC_Filters/HSC_y_filt.txt"
+    - "filters/Euclid/Euclid_NISP.Y.dat"
+    - "filters/Euclid/Euclid_NISP.J.dat"
+    - "filters/Euclid/Euclid_NISP.H.dat"
+    - "filters/HSC_Filters/IRAC_36_filt.txt"
+    - "filters/HSC_Filters/IRAC_45_filt.txt"
+
+  filter_centers:
+    - 3665.89  # CFHT u
+    - 4850.98  # HSC g
+    - 6265.24  # HSC r
+    - 7767.72  # HSC i
+    - 8917.86  # HSC z
+    - 9789.78 # HSC y
+    - 10866.24 # NISP Y
+    - 13766.64 # NISP J
+    - 17825.15 # NISP H
+    - 35572.59 # IRAC ch1
+    - 45049.28 # IRAC ch2
+
+  filter_min:
+   - 3180.0
+   - 3500.0
+   - 5001.9
+   - 6503.0
+   - 8160.0
+   - 9365.0
+   - 9330.0
+   - 11510.0
+   - 14960.0
+   - 29650.0
+   - 37040.0
+
+  filter_max:
+   - 4340.0
+   - 6000.0
+   - 7498.2
+   - 8999.2
+   - 9660.0
+   - 11335.0
+   - 12490.0
+   - 16020.0
+   - 20630.0
+   - 41650.0
+   - 53240.0
+
+  useful_columns:
+    - id 
+    - New_IDs
+    - ra
+    - dec
+    - cfht_u_flux_ujy
+    - cfht_u_flux_ujy_err
+    - hsc_g_flux_ujy
+    - hsc_g_flux_ujy_err
+    - hsc_r_flux_ujy
+    - hsc_r_flux_ujy_err
+    - hsc_i_flux_ujy
+    - hsc_i_flux_ujy_err
+    - hsc_z_flux_ujy
+    - hsc_z_flux_ujy_err
+    - hsc_y_flux_ujy
+    - hsc_y_flux_ujy_err
+    - nisp_y_flux_ujy
+    - nisp_y_flux_ujy_err
+    - nisp_j_flux_ujy
+    - nisp_j_flux_ujy_err
+    - nisp_h_flux_ujy
+    - nisp_h_flux_ujy_err
+    - irac_ch1_flux_ujy
+    - irac_ch1_flux_ujy_err
+    - irac_ch2_flux_ujy
+    - irac_ch2_flux_ujy_err
+
+  flux_columns:
+    - cfht_u_flux_ujy
+    - hsc_g_flux_ujy
+    - hsc_r_flux_ujy
+    - hsc_i_flux_ujy
+    - hsc_z_flux_ujy
+    - hsc_y_flux_ujy
+    - nisp_y_flux_ujy
+    - nisp_j_flux_ujy
+    - nisp_h_flux_ujy
+    - irac_ch1_flux_ujy
+    - irac_ch2_flux_ujy
+
+  fluxerr_columns:
+    - cfht_u_flux_ujy_err
+    - hsc_g_flux_ujy_err
+    - hsc_r_flux_ujy_err
+    - hsc_i_flux_ujy_err
+    - hsc_z_flux_ujy_err
+    - hsc_y_flux_ujy_err
+    - nisp_y_flux_ujy_err
+    - nisp_j_flux_ujy_err
+    - nisp_h_flux_ujy_err
+    - irac_ch1_flux_ujy_err
+    - irac_ch2_flux_ujy_err
+
+  continuum_filters:
+   - 'hsc_g_flux_ujy'
+   - 'hsc_r_flux_ujy'
+   - 'hsc_g_flux_ujy_err'
+   - 'hsc_r_flux_ujy_err'
+
+  continuum_depths:
+   - 26.46
+   - 25.7715
+
+  bp_sf_model:
+   - bc03
+
+CEERS:
+
+  photometry: "Matched_Catalogs/CEERS_matched_photom_cat.fits"
+  filters:
+    - 'filters/HST/ACS/ACS_F435W.txt'
+    - "filters/HST/ACS/ACS_F606W.txt"
+    - "filters/HST/ACS/ACS_F814W.txt"
+    - "filters/HST/WFC3/WFC3_F105W.txt"
+    - "filters/HST/WFC3/WFC3_F125W.txt"
+    - "filters/HST/WFC3/WFC3_F140W.txt"
+    - "filters/HST/WFC3/WFC3_F160W.txt"
+    - "filters/JWST/F090W.txt"
+    - "filters/JWST/F115W.txt"
+    - "filters/JWST/F150W.txt"
+    - "filters/JWST/F200W.txt"
+    - "filters/JWST/F277W.txt"
+    - "filters/JWST/F356W.txt"
+    - "filters/JWST/F410M.txt"
+    - "filters/JWST/F444W.txt"
+    - "filters/JWST/F470N.txt"
+  # Note: The flux columns are based on the CEERS photometry file structure.
+  useful_columns:
+    - 'ID'
+    - 'New_IDs'
+    - 'RA'
+    - 'DEC'
+    - 'FLUX_F435W'
+    - 'FLUXERR_F435W'
+    - 'FLUX_F606W'
+    - 'FLUXERR_F606W'
+    - 'FLUX_F814W'
+    - 'FLUXERR_F814W'
+    - 'FLUX_F105W'
+    - 'FLUXERR_F105W'
+    - 'FLUX_F125W'
+    - 'FLUXERR_F125W'
+    - 'FLUX_F140W'
+    - 'FLUXERR_F140W'
+    - 'FLUX_F160W'
+    - 'FLUXERR_F160W'
+    - 'FLUX_F090W'
+    - 'FLUXERR_F090W'
+    - 'FLUX_F115W'
+    - 'FLUXERR_F115W'
+    - 'FLUX_F150W'
+    - 'FLUXERR_F150W'
+    - 'FLUX_F200W'
+    - 'FLUXERR_F200W'
+    - 'FLUX_F277W'
+    - 'FLUXERR_F277W'
+    - 'FLUX_F356W'
+    - 'FLUXERR_F356W'
+    - 'FLUX_F410M'
+    - 'FLUXERR_F410M'
+    - 'FLUX_F444W'
+    - 'FLUXERR_F444W'
+    - 'FLUX_F470N'
+    - 'FLUXERR_F470N'
+
+  flux_columns:
+    - 'FLUX_F435W'
+    - 'FLUX_F606W'
+    - 'FLUX_F814W'
+    - 'FLUX_F105W'
+    - 'FLUX_F125W'
+    - 'FLUX_F140W'
+    - 'FLUX_F160W'
+    - 'FLUX_F090W'
+    - 'FLUX_F115W'
+    - 'FLUX_F150W'
+    - 'FLUX_F200W'
+    - 'FLUX_F277W'
+    - 'FLUX_F356W'
+    - 'FLUX_F410M'
+    - 'FLUX_F444W'
+    - 'FLUX_F470N'
+
+  fluxerr_columns:
+    - 'FLUXERR_F435W'
+    - 'FLUXERR_F606W'
+    - 'FLUXERR_F814W'
+    - 'FLUXERR_F105W'
+    - 'FLUXERR_F125W'
+    - 'FLUXERR_F140W'
+    - 'FLUXERR_F160W'
+    - 'FLUXERR_F090W'
+    - 'FLUXERR_F115W'
+    - 'FLUXERR_F150W'
+    - 'FLUXERR_F200W'
+    - 'FLUXERR_F277W'
+    - 'FLUXERR_F356W'
+    - 'FLUXERR_F410M'
+    - 'FLUXERR_F444W'
+    - 'FLUXERR_F470N'
+
+  continuum_filters:
+   - 'FLUX_F606W'
+   - 'FLUX_F814W'
+   - 'FLUXERR_F606W'
+   - 'FLUXERR_F814W'
+
+  continuum_depths:
+   - 28.77
+   - 28.49
+
+
+  filter_centers:
+    - 4360.06  # ACS F435W
+    - 6035.73  # ACS F606W
+    - 8129.21  # ACS F814W
+    - 10651.00 # WFC3 F105W
+    - 12576.18 # WFC3 F125W
+    - 14061.91 # WFC3 F140W
+    - 15436.30 # WFC3 F160W
+    - 9083.40  # JWST F090W
+    - 11623.88 # JWST F115W
+    - 15104.23 # JWST F150W
+    - 20028.15 # JWST F200W
+    - 27844.64 # JWST F277W
+    - 35934.49 # JWST F356W
+    - 40886.54 # JWST F410M
+    - 44393.52 # JWST F444W
+    - 47078.82 # JWST F470N
+
+  filter_min:
+   - 3526.99 
+   - 4568.03
+   - 6751.79
+   - 8642.0
+   - 10622.0
+   - 10000.0
+   - 13655.0
+   - 7835.5
+   - 5502.000122070313
+   - 5507.8997802734375
+   - 5504.000244140626
+   - 20004.663860000004
+   - 20004.663860000004
+   - 20004.663860000004
+   - 20004.663860000004
+   - 46198.6
+  
+  filter_max:
+   - 4940.35
+   - 7283.83
+   - 9792.9
+   - 12259.0
+   - 14401.0
+   - 17500.0
+   - 17215.0
+   - 10355.5
+   - 25981.999511718754
+   - 25977.900390625
+   - 25973.9990234375
+   - 50993.013499999994
+   - 50995.474500000004
+   - 50995.474500000004
+   - 50995.474500000004
+   - 47955.2
+  
+
+  bp_sf_model:
+    - bc03
+
+COSMOS:
+  photometry: "Matched_Catalogs/COSMOS_matched_photom_cat.fits"
+  filters:
+    - 'filters/HST/ACS/ACS_F435W.txt'
+    - "filters/HST/ACS/ACS_F606W.txt"
+    - "filters/HST/ACS/ACS_F814W.txt"
+    - "filters/HST/WFC3/WFC3_F105W.txt"
+    - "filters/HST/WFC3/WFC3_F125W.txt"
+    - "filters/HST/WFC3/WFC3_F140W.txt"
+    - "filters/HST/WFC3/WFC3_F160W.txt"
+    - "filters/JWST/F090W.txt"
+    - "filters/JWST/F115W.txt"
+    - "filters/JWST/F150W.txt"
+    - "filters/JWST/F200W.txt"
+    - "filters/JWST/F277W.txt"
+    - "filters/JWST/F356W.txt"
+    - "filters/JWST/F410M.txt"
+    - "filters/JWST/F444W.txt"
+  # Note: The flux columns are based on the COSMOS photometry file structure.
+  flux_columns:
+    - 'FLUX_F435W'
+    - 'FLUX_F606W'
+    - 'FLUX_F814W'
+    - 'FLUX_F105W'
+    - 'FLUX_F125W'
+    - 'FLUX_F140W'
+    - 'FLUX_F160W'
+    - 'FLUX_F090W'
+    - 'FLUX_F115W'
+    - 'FLUX_F150W'
+    - 'FLUX_F200W'
+    - 'FLUX_F277W'
+    - 'FLUX_F356W'
+    - 'FLUX_F410M'
+    - 'FLUX_F444W'
+  fluxerr_columns:
+    - 'FLUXERR_F435W'
+    - 'FLUXERR_F606W'
+    - 'FLUXERR_F814W'
+    - 'FLUXERR_F105W'
+    - 'FLUXERR_F125W'
+    - 'FLUXERR_F140W'
+    - 'FLUXERR_F160W'
+    - 'FLUXERR_F090W'
+    - 'FLUXERR_F115W'
+    - 'FLUXERR_F150W'
+    - 'FLUXERR_F200W'
+    - 'FLUXERR_F277W'
+    - 'FLUXERR_F356W'
+    - 'FLUXERR_F410M'
+    - 'FLUXERR_F444W'
+
+  continuum_filters:
+   - 'FLUX_F606W'
+   - 'FLUX_F814W'
+   - 'FLUXERR_F606W'
+   - 'FLUXERR_F814W'
+
+  useful_columns:
+    - 'ID'
+    - 'New_IDs'
+    - 'RA'
+    - 'DEC'
+    - 'FLUX_F435W'
+    - 'FLUXERR_F435W'
+    - 'FLUX_F606W'
+    - 'FLUXERR_F606W'
+    - 'FLUX_F814W'
+    - 'FLUXERR_F814W'
+    - 'FLUX_F105W'
+    - 'FLUXERR_F105W'
+    - 'FLUX_F125W'
+    - 'FLUXERR_F125W'
+    - 'FLUX_F140W'
+    - 'FLUXERR_F140W'
+    - 'FLUX_F160W'
+    - 'FLUXERR_F160W'
+    - 'FLUX_F090W'
+    - 'FLUXERR_F090W'
+    - 'FLUX_F115W'
+    - 'FLUXERR_F115W'
+    - 'FLUX_F150W'
+    - 'FLUXERR_F150W'
+    - 'FLUX_F200W'
+    - 'FLUXERR_F200W'
+    - 'FLUX_F277W'
+    - 'FLUXERR_F277W'
+    - 'FLUX_F356W'
+    - 'FLUXERR_F356W'
+    - 'FLUX_F410M'
+    - 'FLUXERR_F410M'
+    - 'FLUX_F444W'
+    - 'FLUXERR_F444W'
+
+  filter_centers:
+    - 4360.06  # ACS F435W
+    - 6035.73  # ACS F606W
+    - 8129.21  # ACS F814W
+    - 10651.00 # WFC3 F105W
+    - 12576.18 # WFC3 F125W
+    - 14061.91 # WFC3 F140W
+    - 15436.30 # WFC3 F160W
+    - 9083.40  # JWST F090W
+    - 11623.88 # JWST F115W
+    - 15104.23 # JWST F150W
+    - 20028.15 # JWST F200W
+    - 27844.64 # JWST F277W
+    - 35934.49 # JWST F356W
+    - 40886.54 # JWST F410M
+    - 44393.52 # JWST F444W
+
+  filter_min:
+   - 3526.99 
+   - 4568.03
+   - 6751.79
+   - 8642.0
+   - 10622.0
+   - 10000.0
+   - 13655.0
+   - 7835.5
+   - 5502.000122070313
+   - 5507.8997802734375
+   - 5504.000244140626
+   - 20004.663860000004
+   - 20004.663860000004
+   - 20004.663860000004
+   - 20004.663860000004
+  
+  filter_max:
+   - 4940.35
+   - 7283.83
+   - 9792.9
+   - 12259.0
+   - 14401.0
+   - 17500.0
+   - 17215.0
+   - 10355.5
+   - 25981.999511718754
+   - 25977.900390625
+   - 25973.9990234375
+   - 50993.013499999994
+   - 50995.474500000004
+   - 50995.474500000004
+   - 50995.474500000004
+
+  bp_sf_model:
+    - bc03
+
+UDS:
+  photometry: "Matched_Catalogs/UDS_matched_photom_cat.fits"
+  filters:
+    - 'filters/HST/ACS/ACS_F435W.txt'
+    - "filters/HST/ACS/ACS_F606W.txt"
+    - "filters/HST/ACS/ACS_F814W.txt"
+    - "filters/HST/WFC3/WFC3_F125W.txt"
+    - "filters/HST/WFC3/WFC3_F140W.txt"
+    - "filters/HST/WFC3/WFC3_F160W.txt"
+    - "filters/JWST/F090W.txt"
+    - "filters/JWST/F115W.txt"
+    - "filters/JWST/F150W.txt"
+    - "filters/JWST/F200W.txt"
+    - "filters/JWST/F277W.txt"
+    - "filters/JWST/F356W.txt"
+    - "filters/JWST/F410M.txt"
+    - "filters/JWST/F444W.txt"
+  # Note: The flux columns are based on the COSMOS photometry file structure.
+  flux_columns:
+    - 'FLUX_F435W'
+    - 'FLUX_F606W'
+    - 'FLUX_F814W'
+    - 'FLUX_F125W'
+    - 'FLUX_F140W'
+    - 'FLUX_F160W'
+    - 'FLUX_F090W'
+    - 'FLUX_F115W'
+    - 'FLUX_F150W'
+    - 'FLUX_F200W'
+    - 'FLUX_F277W'
+    - 'FLUX_F356W'
+    - 'FLUX_F410M'
+    - 'FLUX_F444W'
+  fluxerr_columns:
+    - 'FLUXERR_F435W'
+    - 'FLUXERR_F606W'
+    - 'FLUXERR_F814W'
+    - 'FLUXERR_F125W'
+    - 'FLUXERR_F140W'
+    - 'FLUXERR_F160W'
+    - 'FLUXERR_F090W'
+    - 'FLUXERR_F115W'
+    - 'FLUXERR_F150W'
+    - 'FLUXERR_F200W'
+    - 'FLUXERR_F277W'
+    - 'FLUXERR_F356W'
+    - 'FLUXERR_F410M'
+    - 'FLUXERR_F444W'
+
+  continuum_filters:
+   - 'FLUX_F606W'
+   - 'FLUX_F814W'
+   - 'FLUXERR_F606W'
+   - 'FLUXERR_F814W'
+
+  useful_columns:
+    - 'ID'
+    - 'New_IDs'
+    - 'RA'
+    - 'DEC'
+    - 'FLUX_F435W'
+    - 'FLUXERR_F435W'
+    - 'FLUX_F606W'
+    - 'FLUXERR_F606W'
+    - 'FLUX_F814W'
+    - 'FLUXERR_F814W'
+    - 'FLUX_F125W'
+    - 'FLUXERR_F125W'
+    - 'FLUX_F140W'
+    - 'FLUXERR_F140W'
+    - 'FLUX_F160W'
+    - 'FLUXERR_F160W'
+    - 'FLUX_F090W'
+    - 'FLUXERR_F090W'
+    - 'FLUX_F115W'
+    - 'FLUXERR_F115W'
+    - 'FLUX_F150W'
+    - 'FLUXERR_F150W'
+    - 'FLUX_F200W'
+    - 'FLUXERR_F200W'
+    - 'FLUX_F277W'
+    - 'FLUXERR_F277W'
+    - 'FLUX_F356W'
+    - 'FLUXERR_F356W'
+    - 'FLUX_F410M'
+    - 'FLUXERR_F410M'
+    - 'FLUX_F444W'
+    - 'FLUXERR_F444W'
+
+  filter_centers:
+    - 4360.06  # ACS F435W
+    - 6035.73  # ACS F606W
+    - 8129.21  # ACS F814W
+    - 12576.18 # WFC3 F125W
+    - 14061.91 # WFC3 F140W
+    - 15436.30 # WFC3 F160W
+    - 9083.40  # JWST F090W
+    - 11623.88 # JWST F115W
+    - 15104.23 # JWST F150W
+    - 20028.15 # JWST F200W
+    - 27844.64 # JWST F277W
+    - 35934.49 # JWST F356W
+    - 40886.54 # JWST F410M
+    - 44393.52 # JWST F444W
+
+  filter_min:
+   - 3526.99 
+   - 4568.03
+   - 6751.79
+   - 10622.0
+   - 10000.0
+   - 13655.0
+   - 7835.5
+   - 5502.000122070313
+   - 5507.8997802734375
+   - 5504.000244140626
+   - 20004.663860000004
+   - 20004.663860000004
+   - 20004.663860000004
+   - 20004.663860000004
+  
+  filter_max:
+   - 4940.35
+   - 7283.83
+   - 9792.9
+   - 14401.0
+   - 17500.0
+   - 17215.0
+   - 10355.5
+   - 25981.999511718754
+   - 25977.900390625
+   - 25973.9990234375
+   - 50993.013499999994
+   - 50995.474500000004
+   - 50995.474500000004
+   - 50995.474500000004
+
+  bp_sf_model:
+    - bc03
+
+SHELA:
+  photometry: "Matched_Catalogs/SHELA_matched_photom_cat.fits"
+  filters:
+    - 'filters/SHELA/DECam_u.txt'
+    - 'filters/SHELA/DECam_g.txt'
+    - 'filters/SHELA/DECam_r.txt'
+    - 'filters/SHELA/DECam_i.txt'
+    - 'filters/SHELA/DECam_z.txt'
+    - 'filters/SHELA/DECam_y.txt'
+    - 'filters/SHELA/HSC_g_filt.txt'
+    - 'filters/SHELA/HSC_r_filt.txt'
+    - 'filters/SHELA/HSC_i_filt.txt'
+    - 'filters/SHELA/HSC_z_filt.txt'
+    - 'filters/SHELA/HSC_y_filt.txt'
+    - 'filters/SHELA/NEWFIRM_K_atm.txt'
+    - 'filters/SHELA/CFHT_WIRCAM_J.dat'
+    - 'filters/SHELA/CFHT_WIRCAM_Ks.dat'
+    - 'filters/SHELA/VISTA_J_throughput.txt'
+    - 'filters/SHELA/VISTA_Ks_throughput.txt'
+    - 'filters/SHELA/IRAC_36.txt'
+    - 'filters/SHELA/IRAC_45.txt'
+    
+  # Note: The flux columns are based on the COSMOS photometry file structure.
+  
+  flux_columns:
+    - FLUX_u_DECam
+    - FLUX_g_DECam
+    - FLUX_r_DECam
+    - FLUX_i_DECam
+    - FLUX_z_DECam
+    - FLUX_y_DECam
+    - FLUX_g_hsc
+    - FLUX_r_hsc
+    - FLUX_i_hsc
+    - FLUX_z_hsc
+    - FLUX_y_hsc
+    - FLUX_K_NHS
+    - FLUX_J_CFHT
+    - FLUX_K_CFHT
+    - FLUX_J_VISTA
+    - FLUX_K_VISTA
+    - FLUX_ch1
+    - FLUX_ch2
+  
+  fluxerr_columns:
+    - FLUXERR_SIM_u_DECam
+    - FLUXERR_SIM_g_DECam
+    - FLUXERR_SIM_r_DECam
+    - FLUXERR_SIM_i_DECam
+    - FLUXERR_SIM_z_DECam
+    - FLUXERR_SIM_y_DECam
+    - FLUXERR_SIM_g_hsc
+    - FLUXERR_SIM_r_hsc
+    - FLUXERR_SIM_i_hsc
+    - FLUXERR_SIM_z_hsc
+    - FLUXERR_SIM_y_hsc
+    - FLUXERR_SIM_K_NHS
+    - FLUXERR_SIM_J_CFHT
+    - FLUXERR_SIM_K_CFHT
+    - FLUXERR_SIM_J_VISTA
+    - FLUXERR_SIM_K_VISTA
+    - FLUXERR_SIM_ch1
+    - FLUXERR_SIM_ch2
+
+  -useful_columns:
+    - id
+    - New_IDs
+    - RA
+    - DEC
+    - FLUX_u_DECam
+    - FLUXERR_SIM_u_DECam
+    - FLUX_g_DECam
+    - FLUXERR_SIM_g_DECam
+    - FLUX_r_DECam
+    - FLUXERR_SIM_r_DECam
+    - FLUX_i_DECam
+    - FLUXERR_SIM_i_DECam
+    - FLUX_z_DECam
+    - FLUXERR_SIM_z_DECam
+    - FLUX_y_DECam
+    - FLUXERR_SIM_y_DECam
+    - FLUX_g_hsc
+    - FLUXERR_SIM_g_hsc
+    - FLUX_r_hsc
+    - FLUXERR_SIM_r_hsc
+    - FLUX_i_hsc
+    - FLUXERR_SIM_i_hsc
+    - FLUX_z_hsc
+    - FLUXERR_SIM_z_hsc
+    - FLUX_y_hsc
+    - FLUXERR_SIM_y_hsc
+    - FLUX_K_NHS
+    - FLUXERR_SIM_K_NHS
+    - FLUX_J_CFHT
+    - FLUXERR_SIM_J_CFHT
+    - FLUX_K_CFHT
+    - FLUXERR_SIM_K_CFHT
+    - FLUX_J_VISTA
+    - FLUXERR_SIM_J_VISTA
+    - FLUX_K_VISTA
+    - FLUXERR_SIM_K_VISTA 
+    - FLUX_ch1 
+    - FLUXERR_SIM_ch1 
+    - FLUX_ch2 
+    - FLUXERR_SIM_ch2
+
+  continuum_filters:
+   - 'FLUX_g_hsc'
+   - 'FLUX_r_hsc'
+   - 'FLUXERR_SIM_g_hsc'
+   - 'FLUXERR_SIM_r_hsc'
+
+  continuum_depths:
+    - 25.9
+    - 25.6
+
+  filter_centers:
+    - 3821.68 # DECam u
+    - 4862.24  # DECam g
+    - 6460.63  # DECam r
+    - 7850.77  # DECam i
+    - 9199.28  # DECam z
+    - 9906.83 # DECam y
+    - 4850.98  # HSC g
+    - 6265.24  # HSC r
+    - 7767.72  # HSC i
+    - 8917.86  # HSC z
+    - 9789.78  # HSC y
+    - 21758.77 # NEWFIRM K
+    - 12544.57 # CFHT J
+    - 21497.46 # CFHT Ks
+    - 12556.20 # VISTA J
+    - 21578.06 # VISTA Ks
+    - 35572.59 # IRAC ch1
+    - 45049.28 # IRAC ch2
+
+  filter_min:
+    - 3480.0
+    - 3950.0
+    - 5580.0
+    - 6970.0
+    - 8320.0
+    - 9400.0
+    - 3960.0
+    - 5333.3
+    - 6902.3
+    - 8400.0
+    - 9580.0
+    - 19695.0
+    - 11544.0
+    - 19580.0
+    - 11460.0
+    - 19400.0
+    - 31425.0
+    - 9365.0
+  filter_max:
+    - 4010.0
+    - 5510.0
+    - 7210.0
+    - 8620.0
+    - 10060.0
+    - 10700.0
+    - 5530.0
+    - 7155.7
+    - 8837.5
+    - 9460.0
+    - 10905.0
+    - 23695.0
+    - 13534.0
+    - 23430.0
+    - 13640.0
+    - 23630.0
+    - 39625.0
+    - 50565.0
+
+  bp_sf_model:
+    - bc03
+
+GOODSN:
+
+  photometry: "Matched_Catalogs/GOODSN_matched_photom_cat.fits"
+  filters:
+    - 'filters/HST/ACS/ACS_F435W.txt'
+    - "filters/HST/ACS/ACS_F606W.txt"
+    - "filters/HST/ACS/ACS_F775W.txt"
+    - "filters/HST/ACS/ACS_F814W.txt"
+    - "filters/HST/ACS/ACS_F850LP.txt"  
+    - "filters/HST/WFC3/WFC3_F105W.txt"
+    - "filters/HST/WFC3/WFC3_F125W.txt"
+    - "filters/HST/WFC3/WFC3_F140W.txt"
+    - "filters/HST/WFC3/WFC3_F160W.txt"
+    - "filters/JWST/F090W.txt"
+    - "filters/JWST/F115W.txt"
+    - "filters/JWST/F150W.txt"
+    - "filters/JWST/JWST_NIRCam.F182M.dat"
+    - "filters/JWST/F200W.txt"
+    - "filters/JWST/JWST_NIRCam.F210M.dat"
+    - "filters/JWST/F277W.txt"
+    - "filters/JWST/JWST_NIRCam.F335M.dat"
+    - "filters/JWST/F356W.txt"
+    - "filters/JWST/F410M.txt"
+    - "filters/JWST/F444W.txt"
+
+  continuum_filters:
+   - 'FLUX_F606W'
+   - 'FLUX_F814W'
+   - 'FLUXERR_F606W'
+   - 'FLUXERR_F814W'
+
+  continuum_depths:
+   - 29.10
+   - 29.24
+
+  # Note: The flux columns are based on the COSMOS photometry file structure.
+  flux_columns:
+    - 'FLUX_F435W'
+    - 'FLUX_F606W'
+    - 'FLUX_F775W'
+    - 'FLUX_F814W'
+    - 'FLUX_F850L'
+    - 'FLUX_F105W'
+    - 'FLUX_F125W'
+    - 'FLUX_F140W'
+    - 'FLUX_F160W'
+    - 'FLUX_F090W'
+    - 'FLUX_F115W'
+    - 'FLUX_F150W'
+    - 'FLUX_F182M'
+    - 'FLUX_F200W'
+    - 'FLUX_F210M'
+    - 'FLUX_F277W'
+    - 'FLUX_F335M'
+    - 'FLUX_F356W'
+    - 'FLUX_F410M'
+    - 'FLUX_F444W' 
+
+  fluxerr_columns:
+    - 'FLUXERR_F435W'
+    - 'FLUXERR_F606W'
+    - 'FLUXERR_F775W'
+    - 'FLUXERR_F814W'
+    - 'FLUXERR_F850L'
+    - 'FLUXERR_F105W'
+    - 'FLUXERR_F125W'
+    - 'FLUXERR_F140W'
+    - 'FLUXERR_F160W'
+    - 'FLUXERR_F090W'
+    - 'FLUXERR_F115W'
+    - 'FLUXERR_F150W'
+    - 'FLUXERR_F182M'
+    - 'FLUXERR_F200W'
+    - 'FLUXERR_F210M'
+    - 'FLUXERR_F277W'
+    - 'FLUXERR_F335M'
+    - 'FLUXERR_F356W'
+    - 'FLUXERR_F410M'
+    - 'FLUXERR_F444W'
+
+  useful_columns:
+    - 'ID'
+    - 'New_IDs'
+    - 'RA'
+    - 'DEC'
+    - 'FLUX_F435W'
+    - 'FLUXERR_F435W'
+    - 'FLUX_F606W'
+    - 'FLUXERR_F606W'
+    - 'FLUX_F775W'
+    - 'FLUXERR_F775W'
+    - 'FLUX_F814W'
+    - 'FLUXERR_F814W'
+    - 'FLUX_F850L'
+    - 'FLUXERR_F850L'
+    - 'FLUX_F105W'
+    - 'FLUXERR_F105W'
+    - 'FLUX_F125W'
+    - 'FLUXERR_F125W'
+    - 'FLUX_F140W'
+    - 'FLUXERR_F140W'
+    - 'FLUX_F160W'
+    - 'FLUXERR_F160W'
+    - 'FLUX_F090W'
+    - 'FLUXERR_F090W'
+    - 'FLUX_F115W'
+    - 'FLUXERR_F115W'
+    - 'FLUX_F150W'
+    - 'FLUXERR_F150W'
+    - 'FLUX_F182M'
+    - 'FLUXERR_F182M'
+    - 'FLUX_F200W'
+    - 'FLUXERR_F200W'
+    - 'FLUX_F210M'
+    - 'FLUXERR_F210M'
+    - 'FLUX_F277W'
+    - 'FLUXERR_F277W'
+    - 'FLUX_F335M'
+    - 'FLUXERR_F335M'
+    - 'FLUX_F356W'
+    - 'FLUXERR_F356W'
+    - 'FLUX_F410M'
+    - 'FLUXERR_F410M'
+    - 'FLUX_F444W'
+    - 'FLUXERR_F444W'
+
+  filter_centers:
+    - 4360.06  # ACS F435W
+    - 6035.73  # ACS F606W
+    - 7730.77  # ACS F775W
+    - 8129.21  # ACS F814W
+    - 9193.55  # ACS F850LP
+    - 10651.00 # WFC3 F105W
+    - 12576.18 # WFC3 F125W   
+    - 14061.91 # WFC3 F140W
+    - 15436.30 # WFC3 F160W
+    - 9083.40  # JWST F090W
+    - 11623.88 # JWST F115W
+    - 15104.23 # JWST F150W
+    - 18494.30 # JWST F182M
+    - 20028.15 # JWST F200W
+    - 20982.22 # JWST F210M
+    - 27844.64 # JWST F277W
+    - 33675.24 # JWST F335M
+    - 35934.49 # JWST F356W
+    - 40886.54 # JWST F410M
+    - 44393.52 # JWST F444W
+  
+  filter_min:
+    - 3632.86
+    - 4643.04
+    - 6830.78
+    - 6904.19
+    - 8082.46
+    - 8967.0
+    - 10866.0
+    - 11880.0
+    - 13879.0
+    - 7895.5
+    - 9982.000122070312
+    - 13087.900390625
+    - 16995.0
+    - 17284.000244140625
+    - 19666.0
+    - 23755.10615
+    - 31308.0
+    - 30808.0768
+    - 37902.04185
+    - 38172.28814
+
+  filter_max:
+
+    - 4842.88
+    - 7167.05
+    - 8602.95
+    - 9624.46
+    - 10687.2
+    - 12101.0
+    - 14115.0
+    - 16098.0
+    - 16978.0
+    - 10195.5
+    - 13001.99951171875
+    - 16897.900390625
+    - 19945.0
+    - 22533.9990234375
+    - 22276.0
+    - 31897.65517
+    - 36226.5
+    - 40618.017049999995
+    - 43860.972499999996
+    - 50995.474500000004
+
+  bp_sf_model:
+    - bc03
