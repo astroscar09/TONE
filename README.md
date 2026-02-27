@@ -1,4 +1,4 @@
-# TONE
+# The Tracing Observables using Neural Estimation (T.O.N.E.) Project
 
 ## Overview
 
