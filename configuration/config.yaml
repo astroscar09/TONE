@@ -1,0 +1,456 @@
+TONE:
+  useful_columns:
+    - id 
+    - New_IDs
+    - ra
+    - dec
+    - cfht_u_flux_ujy
+    - cfht_u_flux_ujy_err
+    - hsc_g_flux_ujy
+    - hsc_g_flux_ujy_err
+    - hsc_r_flux_ujy
+    - hsc_r_flux_ujy_err
+    - hsc_i_flux_ujy
+    - hsc_i_flux_ujy_err
+    - hsc_z_flux_ujy
+    - hsc_z_flux_ujy_err
+    - hsc_y_flux_ujy
+    - hsc_y_flux_ujy_err
+    - nisp_y_flux_ujy
+    - nisp_y_flux_ujy_err
+    - nisp_j_flux_ujy
+    - nisp_j_flux_ujy_err
+    - nisp_h_flux_ujy
+    - nisp_h_flux_ujy_err
+    - irac_ch1_flux_ujy
+    - irac_ch1_flux_ujy_err
+    - irac_ch2_flux_ujy
+    - irac_ch2_flux_ujy_err
+
+  flux_columns:
+    - cfht_u_flux_ujy
+    - hsc_g_flux_ujy
+    - hsc_r_flux_ujy
+    - hsc_i_flux_ujy
+    - hsc_z_flux_ujy
+    - hsc_y_flux_ujy
+    - nisp_y_flux_ujy
+    - nisp_j_flux_ujy
+    - nisp_h_flux_ujy
+    - irac_ch1_flux_ujy
+    - irac_ch2_flux_ujy
+
+  fluxerr_columns:
+    - cfht_u_flux_ujy_err
+    - hsc_g_flux_ujy_err
+    - hsc_r_flux_ujy_err
+    - hsc_i_flux_ujy_err
+    - hsc_z_flux_ujy_err
+    - hsc_y_flux_ujy_err
+    - nisp_y_flux_ujy_err
+    - nisp_j_flux_ujy_err
+    - nisp_h_flux_ujy_err
+    - irac_ch1_flux_ujy_err
+    - irac_ch2_flux_ujy_err
+
+
+CEERS:
+
+  # Note: The flux columns are based on the CEERS photometry file structure.
+  useful_columns:
+    - 'ID'
+    - 'New_IDs'
+    - 'RA'
+    - 'DEC'
+    - 'FLUX_F435W'
+    - 'FLUXERR_F435W'
+    - 'FLUX_F606W'
+    - 'FLUXERR_F606W'
+    - 'FLUX_F814W'
+    - 'FLUXERR_F814W'
+    - 'FLUX_F105W'
+    - 'FLUXERR_F105W'
+    - 'FLUX_F125W'
+    - 'FLUXERR_F125W'
+    - 'FLUX_F140W'
+    - 'FLUXERR_F140W'
+    - 'FLUX_F160W'
+    - 'FLUXERR_F160W'
+    - 'FLUX_F090W'
+    - 'FLUXERR_F090W'
+    - 'FLUX_F115W'
+    - 'FLUXERR_F115W'
+    - 'FLUX_F150W'
+    - 'FLUXERR_F150W'
+    - 'FLUX_F200W'
+    - 'FLUXERR_F200W'
+    - 'FLUX_F277W'
+    - 'FLUXERR_F277W'
+    - 'FLUX_F356W'
+    - 'FLUXERR_F356W'
+    - 'FLUX_F410M'
+    - 'FLUXERR_F410M'
+    - 'FLUX_F444W'
+    - 'FLUXERR_F444W'
+    - 'FLUX_F470N'
+    - 'FLUXERR_F470N'
+
+  flux_columns:
+    - 'FLUX_F435W'
+    - 'FLUX_F606W'
+    - 'FLUX_F814W'
+    - 'FLUX_F105W'
+    - 'FLUX_F125W'
+    - 'FLUX_F140W'
+    - 'FLUX_F160W'
+    - 'FLUX_F090W'
+    - 'FLUX_F115W'
+    - 'FLUX_F150W'
+    - 'FLUX_F200W'
+    - 'FLUX_F277W'
+    - 'FLUX_F356W'
+    - 'FLUX_F410M'
+    - 'FLUX_F444W'
+    - 'FLUX_F470N'
+
+  fluxerr_columns:
+    - 'FLUXERR_F435W'
+    - 'FLUXERR_F606W'
+    - 'FLUXERR_F814W'
+    - 'FLUXERR_F105W'
+    - 'FLUXERR_F125W'
+    - 'FLUXERR_F140W'
+    - 'FLUXERR_F160W'
+    - 'FLUXERR_F090W'
+    - 'FLUXERR_F115W'
+    - 'FLUXERR_F150W'
+    - 'FLUXERR_F200W'
+    - 'FLUXERR_F277W'
+    - 'FLUXERR_F356W'
+    - 'FLUXERR_F410M'
+    - 'FLUXERR_F444W'
+    - 'FLUXERR_F470N'
+
+
+COSMOS:
+  
+  # Note: The flux columns are based on the COSMOS photometry file structure.
+  flux_columns:
+    - 'FLUX_F435W'
+    - 'FLUX_F606W'
+    - 'FLUX_F814W'
+    - 'FLUX_F105W'
+    - 'FLUX_F125W'
+    - 'FLUX_F140W'
+    - 'FLUX_F160W'
+    - 'FLUX_F090W'
+    - 'FLUX_F115W'
+    - 'FLUX_F150W'
+    - 'FLUX_F200W'
+    - 'FLUX_F277W'
+    - 'FLUX_F356W'
+    - 'FLUX_F410M'
+    - 'FLUX_F444W'
+  fluxerr_columns:
+    - 'FLUXERR_F435W'
+    - 'FLUXERR_F606W'
+    - 'FLUXERR_F814W'
+    - 'FLUXERR_F105W'
+    - 'FLUXERR_F125W'
+    - 'FLUXERR_F140W'
+    - 'FLUXERR_F160W'
+    - 'FLUXERR_F090W'
+    - 'FLUXERR_F115W'
+    - 'FLUXERR_F150W'
+    - 'FLUXERR_F200W'
+    - 'FLUXERR_F277W'
+    - 'FLUXERR_F356W'
+    - 'FLUXERR_F410M'
+    - 'FLUXERR_F444W'
+
+  useful_columns:
+    - 'ID'
+    - 'New_IDs'
+    - 'RA'
+    - 'DEC'
+    - 'FLUX_F435W'
+    - 'FLUXERR_F435W'
+    - 'FLUX_F606W'
+    - 'FLUXERR_F606W'
+    - 'FLUX_F814W'
+    - 'FLUXERR_F814W'
+    - 'FLUX_F105W'
+    - 'FLUXERR_F105W'
+    - 'FLUX_F125W'
+    - 'FLUXERR_F125W'
+    - 'FLUX_F140W'
+    - 'FLUXERR_F140W'
+    - 'FLUX_F160W'
+    - 'FLUXERR_F160W'
+    - 'FLUX_F090W'
+    - 'FLUXERR_F090W'
+    - 'FLUX_F115W'
+    - 'FLUXERR_F115W'
+    - 'FLUX_F150W'
+    - 'FLUXERR_F150W'
+    - 'FLUX_F200W'
+    - 'FLUXERR_F200W'
+    - 'FLUX_F277W'
+    - 'FLUXERR_F277W'
+    - 'FLUX_F356W'
+    - 'FLUXERR_F356W'
+    - 'FLUX_F410M'
+    - 'FLUXERR_F410M'
+    - 'FLUX_F444W'
+    - 'FLUXERR_F444W'
+
+  
+
+UDS:
+  
+  # Note: The flux columns are based on the COSMOS photometry file structure.
+  flux_columns:
+    - 'FLUX_F435W'
+    - 'FLUX_F606W'
+    - 'FLUX_F814W'
+    - 'FLUX_F125W'
+    - 'FLUX_F140W'
+    - 'FLUX_F160W'
+    - 'FLUX_F090W'
+    - 'FLUX_F115W'
+    - 'FLUX_F150W'
+    - 'FLUX_F200W'
+    - 'FLUX_F277W'
+    - 'FLUX_F356W'
+    - 'FLUX_F410M'
+    - 'FLUX_F444W'
+  fluxerr_columns:
+    - 'FLUXERR_F435W'
+    - 'FLUXERR_F606W'
+    - 'FLUXERR_F814W'
+    - 'FLUXERR_F125W'
+    - 'FLUXERR_F140W'
+    - 'FLUXERR_F160W'
+    - 'FLUXERR_F090W'
+    - 'FLUXERR_F115W'
+    - 'FLUXERR_F150W'
+    - 'FLUXERR_F200W'
+    - 'FLUXERR_F277W'
+    - 'FLUXERR_F356W'
+    - 'FLUXERR_F410M'
+    - 'FLUXERR_F444W'
+
+  useful_columns:
+    - 'ID'
+    - 'New_IDs'
+    - 'RA'
+    - 'DEC'
+    - 'FLUX_F435W'
+    - 'FLUXERR_F435W'
+    - 'FLUX_F606W'
+    - 'FLUXERR_F606W'
+    - 'FLUX_F814W'
+    - 'FLUXERR_F814W'
+    - 'FLUX_F125W'
+    - 'FLUXERR_F125W'
+    - 'FLUX_F140W'
+    - 'FLUXERR_F140W'
+    - 'FLUX_F160W'
+    - 'FLUXERR_F160W'
+    - 'FLUX_F090W'
+    - 'FLUXERR_F090W'
+    - 'FLUX_F115W'
+    - 'FLUXERR_F115W'
+    - 'FLUX_F150W'
+    - 'FLUXERR_F150W'
+    - 'FLUX_F200W'
+    - 'FLUXERR_F200W'
+    - 'FLUX_F277W'
+    - 'FLUXERR_F277W'
+    - 'FLUX_F356W'
+    - 'FLUXERR_F356W'
+    - 'FLUX_F410M'
+    - 'FLUXERR_F410M'
+    - 'FLUX_F444W'
+    - 'FLUXERR_F444W'
+
+
+SHELA:
+    
+  # Note: The flux columns are based on the COSMOS photometry file structure.
+  
+  flux_columns:
+    - FLUX_u_DECam
+    - FLUX_g_DECam
+    - FLUX_r_DECam
+    - FLUX_i_DECam
+    - FLUX_z_DECam
+    - FLUX_y_DECam
+    - FLUX_g_hsc
+    - FLUX_r_hsc
+    - FLUX_i_hsc
+    - FLUX_z_hsc
+    - FLUX_y_hsc
+    - FLUX_K_NHS
+    - FLUX_J_CFHT
+    - FLUX_K_CFHT
+    - FLUX_J_VISTA
+    - FLUX_K_VISTA
+    - FLUX_ch1
+    - FLUX_ch2
+  
+  fluxerr_columns:
+    - FLUXERR_SIM_u_DECam
+    - FLUXERR_SIM_g_DECam
+    - FLUXERR_SIM_r_DECam
+    - FLUXERR_SIM_i_DECam
+    - FLUXERR_SIM_z_DECam
+    - FLUXERR_SIM_y_DECam
+    - FLUXERR_SIM_g_hsc
+    - FLUXERR_SIM_r_hsc
+    - FLUXERR_SIM_i_hsc
+    - FLUXERR_SIM_z_hsc
+    - FLUXERR_SIM_y_hsc
+    - FLUXERR_SIM_K_NHS
+    - FLUXERR_SIM_J_CFHT
+    - FLUXERR_SIM_K_CFHT
+    - FLUXERR_SIM_J_VISTA
+    - FLUXERR_SIM_K_VISTA
+    - FLUXERR_SIM_ch1
+    - FLUXERR_SIM_ch2
+
+  -useful_columns:
+    - id
+    - New_IDs
+    - RA
+    - DEC
+    - FLUX_u_DECam
+    - FLUXERR_SIM_u_DECam
+    - FLUX_g_DECam
+    - FLUXERR_SIM_g_DECam
+    - FLUX_r_DECam
+    - FLUXERR_SIM_r_DECam
+    - FLUX_i_DECam
+    - FLUXERR_SIM_i_DECam
+    - FLUX_z_DECam
+    - FLUXERR_SIM_z_DECam
+    - FLUX_y_DECam
+    - FLUXERR_SIM_y_DECam
+    - FLUX_g_hsc
+    - FLUXERR_SIM_g_hsc
+    - FLUX_r_hsc
+    - FLUXERR_SIM_r_hsc
+    - FLUX_i_hsc
+    - FLUXERR_SIM_i_hsc
+    - FLUX_z_hsc
+    - FLUXERR_SIM_z_hsc
+    - FLUX_y_hsc
+    - FLUXERR_SIM_y_hsc
+    - FLUX_K_NHS
+    - FLUXERR_SIM_K_NHS
+    - FLUX_J_CFHT
+    - FLUXERR_SIM_J_CFHT
+    - FLUX_K_CFHT
+    - FLUXERR_SIM_K_CFHT
+    - FLUX_J_VISTA
+    - FLUXERR_SIM_J_VISTA
+    - FLUX_K_VISTA
+    - FLUXERR_SIM_K_VISTA 
+    - FLUX_ch1 
+    - FLUXERR_SIM_ch1 
+    - FLUX_ch2 
+    - FLUXERR_SIM_ch2
+
+
+GOODSN:
+
+  # Note: The flux columns are based on the COSMOS photometry file structure.
+  flux_columns:
+    - 'FLUX_F435W'
+    - 'FLUX_F606W'
+    - 'FLUX_F775W'
+    - 'FLUX_F814W'
+    - 'FLUX_F850L'
+    - 'FLUX_F105W'
+    - 'FLUX_F125W'
+    - 'FLUX_F140W'
+    - 'FLUX_F160W'
+    - 'FLUX_F090W'
+    - 'FLUX_F115W'
+    - 'FLUX_F150W'
+    - 'FLUX_F182M'
+    - 'FLUX_F200W'
+    - 'FLUX_F210M'
+    - 'FLUX_F277W'
+    - 'FLUX_F335M'
+    - 'FLUX_F356W'
+    - 'FLUX_F410M'
+    - 'FLUX_F444W' 
+
+  fluxerr_columns:
+    - 'FLUXERR_F435W'
+    - 'FLUXERR_F606W'
+    - 'FLUXERR_F775W'
+    - 'FLUXERR_F814W'
+    - 'FLUXERR_F850L'
+    - 'FLUXERR_F105W'
+    - 'FLUXERR_F125W'
+    - 'FLUXERR_F140W'
+    - 'FLUXERR_F160W'
+    - 'FLUXERR_F090W'
+    - 'FLUXERR_F115W'
+    - 'FLUXERR_F150W'
+    - 'FLUXERR_F182M'
+    - 'FLUXERR_F200W'
+    - 'FLUXERR_F210M'
+    - 'FLUXERR_F277W'
+    - 'FLUXERR_F335M'
+    - 'FLUXERR_F356W'
+    - 'FLUXERR_F410M'
+    - 'FLUXERR_F444W'
+
+  useful_columns:
+    - 'ID'
+    - 'New_IDs'
+    - 'RA'
+    - 'DEC'
+    - 'FLUX_F435W'
+    - 'FLUXERR_F435W'
+    - 'FLUX_F606W'
+    - 'FLUXERR_F606W'
+    - 'FLUX_F775W'
+    - 'FLUXERR_F775W'
+    - 'FLUX_F814W'
+    - 'FLUXERR_F814W'
+    - 'FLUX_F850L'
+    - 'FLUXERR_F850L'
+    - 'FLUX_F105W'
+    - 'FLUXERR_F105W'
+    - 'FLUX_F125W'
+    - 'FLUXERR_F125W'
+    - 'FLUX_F140W'
+    - 'FLUXERR_F140W'
+    - 'FLUX_F160W'
+    - 'FLUXERR_F160W'
+    - 'FLUX_F090W'
+    - 'FLUXERR_F090W'
+    - 'FLUX_F115W'
+    - 'FLUXERR_F115W'
+    - 'FLUX_F150W'
+    - 'FLUXERR_F150W'
+    - 'FLUX_F182M'
+    - 'FLUXERR_F182M'
+    - 'FLUX_F200W'
+    - 'FLUXERR_F200W'
+    - 'FLUX_F210M'
+    - 'FLUXERR_F210M'
+    - 'FLUX_F277W'
+    - 'FLUXERR_F277W'
+    - 'FLUX_F335M'
+    - 'FLUXERR_F335M'
+    - 'FLUX_F356W'
+    - 'FLUXERR_F356W'
+    - 'FLUX_F410M'
+    - 'FLUXERR_F410M'
+    - 'FLUX_F444W'
+    - 'FLUXERR_F444W'

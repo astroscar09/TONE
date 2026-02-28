@@ -1,0 +1,16 @@
+HDR5:
+  flag_best: 1
+  flag_seldet: 1
+  flag_shot_cosmology: 1
+  apcor: 0.4
+  sn_rres: 4.2
+  p_conf: 0.5
+  sn: 5.5
+  cnn_score: 0.2
+  selected_det: True
+  agn_included: False
+  cont_included: False
+  hdr_version: 5.0.1
+
+cross_match:
+   search_radius: 1.51 
