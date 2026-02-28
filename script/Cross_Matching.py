@@ -1,7 +1,7 @@
 from coordinates import cross_match
 from file_io import read_config_yaml, read_HDR5, read_in_photom_cat, save_table
 from preprocessing_script import generate_lyaz, convert_photom_flux, photom_quality_check, DF_to_astropy_table
-from config_parser import grab_useful_columns, grab_flux_columns, 
+from config_parser import grab_useful_columns, grab_flux_columns 
 import argparse
 
 def main(photom_config, selection_config, field, HDR): 
@@ -29,7 +29,9 @@ def main(photom_config, selection_config, field, HDR):
     # Read in the photometric catalog
     photom_tab = read_in_photom_cat(phot_file)
 
-    matched_phot, matched_hdr_df = cross_match(photom_tab, HDR_DF, photom_config, selection_config)
+    field_config = photom_config[field]
+
+    matched_phot, matched_hdr_df = cross_match(photom_tab, HDR_DF, field_config, selection_config)
     
     cols = grab_useful_columns(photom_config, field)
     flux_cols, fluxerr_cols = grab_flux_columns(photom_config, field) 
@@ -37,9 +39,9 @@ def main(photom_config, selection_config, field, HDR):
     matched_phot_muJy = convert_photom_flux(matched_phot, flux_cols, fluxerr_cols, units)
     good_matched_phot_muJy = photom_quality_check(matched_phot_muJy, flux_cols, fluxerr_cols)
     
-    lya = generate_lyaz(matched_hdr_df['wave'].values, matched_hdr_df['wave_err'].values)
+    lya, lya_err = generate_lyaz(matched_hdr_df['wave'].values, matched_hdr_df['wave_err'].values)
 
-    photom_cat['Redshift'] = lya
+    good_matched_phot_muJy['Redshift'] = lya
 
     mask = lya > 0
 
@@ -69,7 +71,7 @@ if __name__ == "__main__":
     phot_config = read_config_yaml(config_phot_file)
     selection_config = read_config_yaml(config_selection_file)
     
-    photom_cat, matched_df = main(config_phot_file, config_selection_file, field, HDR)
+    photom_cat, matched_df = main(phot_config, selection_config, field, HDR)
 
     # Save the matched photometric catalog to a CSV file
     #photom_cat.write(f'Matched_Catalogs/{field}_matched_photom_cat.fits', overwrite = True)
@@ -78,12 +80,9 @@ if __name__ == "__main__":
     save_table(photom_cat, outfile)
 
     hdr_tab = DF_to_astropy_table(matched_df)
-    save_table(photom_cat, outfile)
+    save_table(photom_cat, f'outputs/HDR_DF_{field}.fits')
     #save_df()
 
 
-
-
-# 
 
 

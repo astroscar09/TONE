@@ -1,10 +1,10 @@
 CEERS:
-  photometry: file1
+  photometry: '../../TESLA/data/Catalogs/CEERS/ceers_photom_v0.9.fits'
   id_col: ID
   ra_col: RA
   dec_col: DEC
   phot_unit: nJy
-  output: 
+  output: 'outputs/Matched_CEERS_Photom.fits'
   
   useful_columns:
     - 'ID'
@@ -81,11 +81,13 @@ CEERS:
     - 'FLUXERR_F470N'
 
 COSMOS:
-  photometry: file1
+  photometry: '../../TESLA/data/Catalogs/COSMOS/cosmos_photom_v0.9.fits'
   id_col: ID
   ra_col: RA
   dec_col: DEC
   phot_unit: nJy
+  output: 'outputs/Matched_COSMOS_Photom.fits'
+  
   flux_columns:
     - 'FLUX_F435W'
     - 'FLUX_F606W'
@@ -156,11 +158,12 @@ COSMOS:
     - 'FLUXERR_F444W'
 
 GOODSN:
-  photometry: file1
+  photometry: '../../TESLA/data/Catalogs/GOODSN/goodsn_photom_v0.9.fits'
   id_col: ID
   ra_col: RA
   dec_col: DEC
   phot_unit: nJy
+  output: 'outputs/Matched_GOODSN_Photom.fits'
 
   flux_columns:
     - 'FLUX_F435W'
@@ -255,11 +258,12 @@ GOODSN:
 
 
 SHELA:
-  photometry: file1
+  photometry: '../../TESLA/data/Catalogs/SHELA/SHELA_final_pz_v0.3.cat'
   id_col: id
   ra_col: RA
   dec_col: DEC
   phot_unit: muJy
+  output: 'outputs/Matched_SHELA_Photom.fits'
 
   flux_columns:
     - FLUX_u_DECam
@@ -345,11 +349,12 @@ SHELA:
 
 TONE:
 
-  photometry: file1
+  photometry: '../../TESLA/data/Catalogs/EUCLID/MERGED_EUCLID_H20_Catalog_Dups_Removed.fits'
   id_col: id
   ra_col: ra
   dec_col: dec
   phot_unit: muJy
+  output: 'outputs/Matched_TONE_Photom.fits'
 
   useful_columns:
     - id 
@@ -406,11 +411,12 @@ TONE:
     - irac_ch2_flux_ujy_err
 
 UDS:
-  photometry: file1
+  photometry: '../../TESLA/data/Catalogs/UDS/primeruds_photom_v0.89.fits'
   id_col: ID
   ra_col: RA
   dec_col: DEC
   phot_unit: nJy
+  output: 'outputs/Matched_UDS_Photom.fits'
 
   flux_columns:
     - 'FLUX_F435W'

@@ -36,8 +36,8 @@ def photom_quality_check(phot_catalog, flux_cols, fluxerr_cols,
 
     for f, ferr in zip(flux_cols, fluxerr_cols):
         
-        signal = phot_catalog[flux_cols]
-        noise  = phot_catalog[fluxerr_cols]
+        signal = phot_catalog[f].data
+        noise  = phot_catalog[ferr].data
 
         SNR = signal/noise
 
@@ -50,8 +50,8 @@ def photom_quality_check(phot_catalog, flux_cols, fluxerr_cols,
         signal[mask] = default_flux
         noise[mask] = default_error
 
-        phot_catalog[flux_cols] = signal
-        phot_catalog[fluxerr_cols] = noise
+        phot_catalog[f] = signal
+        phot_catalog[ferr] = noise
 
     return phot_catalog
 

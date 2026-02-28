@@ -38,7 +38,8 @@ def read_HDR5(field, config):
               'primer-cosmos': 'cosmos', 'cosmos': 'cosmos', 
               'goodsn': 'goods-n', 
               'primer-uds': 'other', 'uds': 'uds'}
-    
+
+    #print(config)
     hdr5_config = config['HDR5']
     hdr_version = hdr5_config['hdr_version']
 
@@ -55,34 +56,27 @@ def read_HDR5(field, config):
     catfile = op.join(config.hdr_dir[hdrv], 'catalogs', 'source_catalog_' + hdr_version + '.fits')
     source_table = Table.read(catfile)
 
-    sel_best = (source_table['flag_best']==hdr5_config['flag_best']) * (source_table['flag_seldet'] == hdr5_config['flag_seldet']) * (source_table['flag_shot_cosmology']==hdr5_config['flag_shot_cosmology'])
-    sel_apcor = (source_table['apcor'] > hdr5_config['apcor'])
+    sel_cat = (source_table['flag_best']==hdr5_config['flag_best']) * (source_table['flag_seldet'] == hdr5_config['flag_seldet']) * (source_table['flag_shot_cosmology']==hdr5_config['flag_shot_cosmology'])
+    sel_cat *= (source_table['apcor'] > hdr5_config['apcor'])
 
-    sel_cut1 = (source_table['sn_rres'] >= hdr5_config['sn_rres'])
-    sel_cut2 = np.invert((source_table['p_conf'] < hdr5_config['p_conf']) * (source_table['sn'] >= hdr5_config['sn']))
-    sel_cut3 = source_table['CNN_Score_2D_Spectra'] >= hdr5_config['cnn_score']
-    sel_cuts = sel_cut1 * sel_cut2 * sel_cut3
-
-    sel_agn = np.ones(len(sel_apcor), dtype = bool)
-    sel_cont = np.ones(len(sel_apcor), dtype = bool)
+    sel_cat *= (source_table['sn_rres'] >= hdr5_config['sn_rres'])
+    sel_cat *= np.invert((source_table['p_conf'] < hdr5_config['p_conf']) * (source_table['sn'] >= hdr5_config['sn']))
+    sel_cat *= source_table['CNN_Score_2D_Spectra'] >= hdr5_config['cnn_score']
 
     if hdr5_config['selected_det']:
-        sel_det = source_table['selected_det'] == True
+        sel_cat *= source_table['selected_det'] == True
     else:
-        sel_det = source_table['selected_det'] == False
+        sel_cat *= source_table['selected_det'] == False
 
     if not hdr5_config['agn_included']:
-        sel_agn = source_table['source_type']!= 'agn'
+        sel_cat *= source_table['source_type']!= 'agn'
 
     if not hdr5_config['cont_included']:
         #we remove continuum sources
-        sel_cont = source_table['det_type'] != 'cont'
+        sel_cat *= source_table['det_type'] != 'cont'
     
     #we subselect only detections within the field user input
-    field_flag = source_table['field'] == field
-
-    #we make a master mask
-    sel_cat = (sel_best & sel_apcor &  sel_cuts & sel_cont & sel_agn) & sel_det & field_flag
+    sel_cat *= source_table['field'] == field
 
     #apply mask and remove duplicates based off of source_id
     uniq_table = unique(source_table[sel_cat], keys='source_id')
