@@ -11,17 +11,8 @@ import warnings
 warnings.simplefilter(action='ignore', category=pd.errors.SettingWithCopyWarning)
 import os
 
-try:
-    from mpi4py import MPI
-    comm = MPI.COMM_WORLD
-    rank = comm.Get_rank()
-    
-except:
-    rank = 0
 
-
-if rank == 0:
-    print('Grabbing the necessary filter curves', flush=True)
+print('Grabbing the necessary filter curves', flush=True)
 
 with open('config.yaml', 'r') as f:
     config = yaml.safe_load(f)
@@ -69,17 +60,15 @@ parser.add_argument('--id', type=int, required=True, help='Object ID to process'
 args = parser.parse_args()
 field_name = args.field
 
-if rank == 0:
-    print(f'Using field: {field_name} \n', flush=True)
+print(f'Using field: {field_name} \n', flush=True)
 
 filters, phot_file, flux_cols, fluxerr_cols, bp_sf_model = get_field_info(field_name)
 
-if rank == 0:
-    print(f'Using the {bp_sf_model} Templates', flush=True)
-    print(f"{'Filters':<35} {'Flux Columns':<25} {'Flux Error Columns':<25}", flush=True)
-    print('-' * 85, flush=True)
-    for filt , f_col, ferr_col in zip(filters, flux_cols, fluxerr_cols):
-        print(f'{filt:<35} {f_col:<25} {ferr_col:<25}', flush=True)
+print(f'Using the {bp_sf_model} Templates', flush=True)
+print(f"{'Filters':<35} {'Flux Columns':<25} {'Flux Error Columns':<25}", flush=True)
+print('-' * 85, flush=True)
+for filt , f_col, ferr_col in zip(filters, flux_cols, fluxerr_cols):
+    print(f'{filt:<35} {f_col:<25} {ferr_col:<25}', flush=True)
 
 filter_min, filter_max = grab_min_and_max_filt_wavelengths(field_name)
 
@@ -263,8 +252,8 @@ def fit_instruction_nebular_fixedz(z, model = 'delayed_tau'):
         bins = np.logspace(np.log10(100), bin_end, 5)
         
         age_bins = np.append(starting_bin, bins)
-        if rank == 0:
-            print("Making Fit Instructions for Bursty Non-Parametric SFH Model \n", flush=True)
+       
+        print("Making Fit Instructions for Bursty Non-Parametric SFH Model \n", flush=True)
         dust = {}
         dust["type"] = "Salim"
         dust["eta"] = 1.
@@ -368,8 +357,8 @@ def test_functions():
     test_load_func = load_phot
     test_z = get_redshift(Bagpipes_Phot_tab, test_ID)
     print(f'Testing with ID: {test_ID}, Redshift: {test_z:.2f}')
-    if rank == 0:
-        print('Testing Functions', flush=True)
+    
+    print('Testing Functions', flush=True)
     fit_BP(test_ID, test_filters, test_load_func, test_z, run='test_run', only_fit=True, model='bursty')
 
     
@@ -378,11 +367,9 @@ if __name__ == '__main__':
 
     #if os.path.exist('pipes/posterior/{}')
     
-    if rank == 0:
-        print('\nGrabbing Bagpipes Run Name', flush=True)
+    print('\nGrabbing Bagpipes Run Name', flush=True)
     run = args.run_name
-    if rank == 0:
-        print(f'Run-Name: {run} Acquired \n', flush=True)
+    print(f'Run-Name: {run} Acquired \n', flush=True)
 
     
     
@@ -392,20 +379,16 @@ if __name__ == '__main__':
     ID = IDs[index]
     
     if os.path.exists('pipes/posterior/{run}/{ID}.h5'):
-        if rank == 0:
-            print(f'Posterior for ID: {ID} already exists, skipping fit.', flush=True)
+        print(f'Posterior for ID: {ID} already exists, skipping fit.', flush=True)
         exit(0)
     
     else:
-        if rank == 0:
-            print(f'Posterior for ID: {ID} does not exist, proceeding with fit.', flush=True)
+        print(f'Posterior for ID: {ID} does not exist, proceeding with fit.', flush=True)
         z_tesla = get_redshift(Bagpipes_Phot_tab, ID)
         
-        if rank == 0:
-            print(f'About to fit index {index}, ID: {ID} with Redshift: {z_tesla:.2f} \n', flush=True)
+        print(f'About to fit index {index}, ID: {ID} with Redshift: {z_tesla:.2f} \n', flush=True)
         
         fit_BP(ID, filters, load_phot, z_tesla, run, only_fit = True, model = 'bursty')
         
-        if rank == 0:
-            print(f'Successfully fitted index {index}, ID: {ID} \n', flush=True)
+        print(f'Successfully fitted index {index}, ID: {ID} \n', flush=True)
 

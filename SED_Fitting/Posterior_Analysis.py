@@ -5,7 +5,7 @@ import bagpipes as pipes
 from BP_PreLoad import *
 from astropy.cosmology import LambdaCDM
 from astropy.table import Table
-from plotting_utils import *
+from SED_Fitting.plotting_utils import *
 from tqdm import tqdm
 from astropy.table import vstack
 import os 

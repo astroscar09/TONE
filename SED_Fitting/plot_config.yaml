@@ -1,0 +1,53 @@
+plot_params:
+  stellar_mass:
+    min: 7
+    max: 12
+    bins: 30
+  massformed:
+    min: 7
+    max: 12
+    bins: 30
+  metallicity:
+    min: 0
+    max: 3
+    bins: 30
+  sfr:
+    min: 0
+    max: 400
+    bins: 30
+  mass:
+    min: 7
+    max: 12
+    bins: 30
+  logU:
+    min: -4
+    max: 0
+    bins: 30
+  Av:
+    min: 0
+    max: 3
+    bins: 30
+  ssfr:
+    min: -13
+    max: -7.5
+    bins: 30
+  Muv:
+    min: -26.7
+    max: -16
+    bins: 30
+  beta:
+    min: -2.88
+    max: 3
+    bins: 30
+  burstiness:
+    min: -1
+    max: 5
+    bins: 30
+  chisq_phot:
+    min: 0
+    max: 1000
+    bins: 30
+  EW_lya_rest:
+    min: 0
+    max: 1000
+    bins: 30
