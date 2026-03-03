@@ -43,7 +43,7 @@ def make_non_param_instructions(config, z):
     dust["Av"] = (0., 3.)
 
     nebular = {}
-    if bp_sf_model == 'bpass':
+    if config['bp_sf_model'] == 'bpass':
         nebular["logU"] = (-4, -1)
     else:
         nebular["logU"] = (-4, 0)  
@@ -128,7 +128,7 @@ def make_bursty_instructions(config, z):
     dust["B"] = (0., 4.5) # Taken from Salim et al 2018 as seen in their Figure 3 colorbar
 
     nebular = {}
-    if bp_sf_model == 'bpass':
+    if config['bp_sf_model'] == 'bpass':
         nebular["logU"] = (-4, -1)
     else:
         nebular["logU"] = (-4, 0) 

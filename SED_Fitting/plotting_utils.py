@@ -8,7 +8,6 @@ import seaborn as sb
 from config_loader import open_config
 
 plot_config =  open_config('plot_config.yaml')
-
 plot_params = plot_config['plot_params']
 
 plt.rcParams['axes.linewidth'] = 1.2
