@@ -5,10 +5,9 @@ import itertools
 from scipy.stats import gaussian_kde
 from matplotlib.ticker import MaxNLocator
 import seaborn as sb
-import yaml 
+from config_loader import open_config
 
-with open('plot_config.yaml', 'r') as f:
-    plot_config = yaml.safe_load(f)
+plot_config =  open_config('plot_config.yaml')
 
 plot_params = plot_config['plot_params']
 
