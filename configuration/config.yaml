@@ -319,7 +319,7 @@ SHELA:
     - FLUXERR_SIM_ch1
     - FLUXERR_SIM_ch2
 
-  -useful_columns:
+  useful_columns:
     - id
     - New_IDs
     - RA
