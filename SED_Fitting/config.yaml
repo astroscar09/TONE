@@ -1,3 +1,10 @@
+output:
+  summary_dir: "summary_output"
+  sed_plots_dir: "sed_plots"
+  corner_plots_dir: "summary_plots"
+  posterior_dir: "summary_output"
+  hdr_catalog_dir: "Matched_Catalogs"
+
 TONE:
   photometry: "Matched_Catalogs/TONE_matched_photom_cat.fits"
   filters: 

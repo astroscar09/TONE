@@ -4,10 +4,10 @@ import pandas as pd
 import bagpipes as pipes
 from astropy.cosmology import LambdaCDM
 from astropy.table import Table
-from SED_Fitting.plotting_utils import *
+from plotting_utils import *
 from tqdm import tqdm
 from astropy.table import vstack
-import os 
+import os
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
@@ -112,9 +112,9 @@ def grab_relevant_photometry(fit, load_phot, snr_threshold=3):
 
     return chi2_med_phot, chi2_min_phot, num_good_data
 
-def summary_dist_tab(fit, tab, ID):
+def summary_dist_tab(fit, tab, ID, load_phot):
 
-    chi2_med_phot, chi2_min_phot, num_good_data = grab_relevant_photometry(fit)
+    chi2_med_phot, chi2_min_phot, num_good_data = grab_relevant_photometry(fit, load_phot)
     posterior_dict = {'ID': [ID], 
                        'num_good_data': [num_good_data],
                        'chi2_med_phot': [chi2_med_phot],
@@ -521,56 +521,78 @@ def load_hdr_table(file):
 
     return hdr_df 
 
-def main(fit, field_name):
-    
-    hdr_tab = load_hdr_table(f'Matched_Catalogs/{field_name}_matched_hdr_df.fits')
+def main_summary(fit, field_name, load_phot, output_dirs, overwrite=False):
+    """Run post-fit analysis: compute posterior summaries, plots, and save outputs.
+
+    Parameters
+    ----------
+    fit : pipes.fit
+        The completed BAGPIPES fit object.
+    field_name : str
+        Survey field name (e.g. 'CEERS', 'TONE').
+    load_phot : callable
+        The photometry loader used during fitting (accepts an integer ID).
+    output_dirs : dict
+        Paths for all output locations. Expected keys:
+            summary_dir      — where Summary_*.fits files are written
+            sed_plots_dir    — where SED PNG files are written
+            corner_plots_dir — where corner plot PNGs are written
+            posterior_dir    — where Posterior_Distribution_*.fits.gz are written
+            hdr_catalog_dir  — directory containing {field}_matched_hdr_df.fits
+    overwrite : bool, optional
+        If True, reprocess and overwrite existing output files. Default is False.
+    """
+    hdr_catalog_path = os.path.join(output_dirs['hdr_catalog_dir'], f'{field_name}_matched_hdr_df.fits')
+    hdr_tab = load_hdr_table(hdr_catalog_path)
     ID = int(fit.galaxy.ID)
 
-    if not os.path.exists(f'summary_output/Summary_{field_name}_{ID}.fits'):
-        
+    summary_path = os.path.join(output_dirs['summary_dir'], f'Summary_{field_name}_{ID}.fits')
+
+    if overwrite or not os.path.exists(summary_path):
+
         print(f'No summary file for {field_name} {ID}, generating one.')
         merged_tab = merged_1d_posterior(fit)
-        summary_tab = summary_dist_tab(fit, merged_tab, ID)
-        
-        summary_tab.write(f'summary_output/Summary_{field_name}_{ID}.fits', overwrite=True)
-        
-        plot_model_sed(fit, save_path = f'sed_plots/SED_{field_name}_{ID}.png')
+        summary_tab = summary_dist_tab(fit, merged_tab, ID, load_phot)
+
+        summary_tab.write(summary_path, overwrite=True)
+
+        sed_path = os.path.join(output_dirs['sed_plots_dir'], f'SED_{field_name}_{ID}.png')
+        plot_model_sed(fit, load_phot, save_path=sed_path)
 
         reduced_tab = subselect_plot_tab(merged_tab)
-
         fig = corner_plot(reduced_tab)
-        fig.savefig(f'summary_plots/Corner_{field_name}_{ID}.png', dpi=150)
-
+        corner_path = os.path.join(output_dirs['corner_plots_dir'], f'Corner_{field_name}_{ID}.png')
+        fig.savefig(corner_path, dpi=150)
         plt.close('all')
 
         rename_cols = {'continuity:dsfr1': 'dsfr1',
-                    'continuity:dsfr2': 'dsfr2',
-                    'continuity:dsfr3': 'dsfr3',
-                    'continuity:dsfr4': 'dsfr4',
-                    'continuity:dsfr5': 'dsfr5',
-                    'continuity:dsfr6': 'dsfr6',
-                    'continuity:dsfr7': 'dsfr7',
-                    'continuity:massformed': 'massformed',
-                    'continuity:metallicity': 'metallicity',
-                    'dust:Av': 'Av',
-                    'dust:B': 'B',
-                    'dust:delta': 'delta',
-                    'nebular:logU': 'logU'}
+                       'continuity:dsfr2': 'dsfr2',
+                       'continuity:dsfr3': 'dsfr3',
+                       'continuity:dsfr4': 'dsfr4',
+                       'continuity:dsfr5': 'dsfr5',
+                       'continuity:dsfr6': 'dsfr6',
+                       'continuity:dsfr7': 'dsfr7',
+                       'continuity:massformed': 'massformed',
+                       'continuity:metallicity': 'metallicity',
+                       'dust:Av': 'Av',
+                       'dust:B': 'B',
+                       'dust:delta': 'delta',
+                       'nebular:logU': 'logU'}
 
         for old_col, new_col in rename_cols.items():
-            
             merged_tab.rename_column(old_col, new_col)
 
         merged_tab['gal_ID'] = f'{field_name}_{ID}'
 
-        flux = hdr_tab.loc[ID, 'flux'] * 1e-17  # Convert to erg/s/cm²
-        flux_err = hdr_tab.loc[ID, 'flux_err'] * 1e-17  # Convert to erg/s/cm²
+        flux = hdr_tab.loc[ID, 'flux'] * 1e-17
+        flux_err = hdr_tab.loc[ID, 'flux_err'] * 1e-17
         zlya = hdr_tab.loc[ID, 'lya_z']
 
         merged_tab = add_hdr_flux_to_posterior(merged_tab, flux, flux_err, zlya)
-        
-        merged_tab.write(f'summary_output/Posterior_Distribution_{field_name}_{ID}.fits.gz', overwrite=True)
-    
+
+        posterior_path = os.path.join(output_dirs['posterior_dir'], f'Posterior_Distribution_{field_name}_{ID}.fits.gz')
+        merged_tab.write(posterior_path, overwrite=True)
+
     else:
         print(f'Summary file for {field_name} {ID} already exists, skipping.')
 
