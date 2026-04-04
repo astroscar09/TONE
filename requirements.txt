@@ -1,0 +1,26 @@
+# Core scientific stack
+numpy
+pandas
+scipy
+astropy
+scikit-learn
+
+# Visualization
+matplotlib
+seaborn
+
+# Progress bars
+tqdm
+
+# Configuration
+pyyaml
+
+# SED fitting
+bagpipes
+
+# HETDEX data access — install from https://github.com/HETDEX/hetdex_api
+# hetdex_api is not on PyPI; follow the instructions in the link above
+hetdex_api
+
+# HPC parallelization (optional, used in Posterior_Analysis.py)
+mpi4py

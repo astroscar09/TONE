@@ -55,7 +55,8 @@ cover/
 *.mo
 *.pot
 
-.history
+.history/
+.DS_Store
 
 # Django stuff:
 *.log
